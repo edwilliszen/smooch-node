@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "d9827949-edb8-4df4-bee2-c86b341ca7be",
+		"name": "smooch",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "connectNotification - Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"message id\",\n    \"campaign_id\": \"5c9bf50d1c5d6e0071e135b3\",\n    \"user_id\": \"user id\",\n    \"data\": {\n        \"contactName\": \"John Doe\",\n        \"target\": \"800-555-1212\"\n    }\n}\n"
+				},
+				"url": {
+					"raw": "https://sg9zzxdk9j.execute-api.us-west-2.amazonaws.com/dev/connectNotification",
+					"protocol": "https",
+					"host": [
+						"sg9zzxdk9j",
+						"execute-api",
+						"us-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"connectNotification"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

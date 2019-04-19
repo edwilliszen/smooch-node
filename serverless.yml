@@ -1,0 +1,24 @@
+service: smooch-node # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${opt:region, 'us-west-2'} # Overwrite the default region used. Default is now us-west-2 (Oregon)
+
+functions:
+  connectNotification:
+    handler: handler.connectNotification
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: connectNotification
+          method: post
+          cors: true
+    environment:
+      SMOOCH_INTEGRATIONID: ${ssm:integrationId}
+      SMOOCH_JWT: ${ssm:smoochJWT}
+      SMOOCH_APPID: ${ssm:appId}
+      #CONNECT_AUTHHEADER: ${ssm:connectAuthHeader}
+      #CONNECT_AUTHKEY: ${ssm:connectAuthKey}
+      # List of authorized campaignIds, comma-separated
+      #CONNECT_CAMPAIGNIDS: ${ssm:connectCampaignIds}

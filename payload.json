@@ -1,0 +1,20 @@
+{
+    "headers": {
+        "Accept": "*/*",
+        "accept-encoding": "gzip, deflate",
+        "cache-control": "no-cache",      
+        "Content-Type": "application/json",
+        "Host": "sg9zzxdk9j.execute-api.us-west-2.amazonaws.com",
+        "User-Agent": "PostmanRuntime/7.6.1"
+    },
+    "body":
+    {
+        "id": "message id",
+        "campaign_id": "5c9bf50d1c5d6e0071e135b3",
+        "user_id": "user id",
+        "data": {
+            "contactName": "John Doe",
+            "target": "800-555-1212"
+        }
+    }
+}
