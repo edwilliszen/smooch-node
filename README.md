@@ -26,11 +26,28 @@ Use the command `aws ssm put-parameter --name supermanToken --type String --valu
 * integrationId
 * smoochJWT
 
+## Deploy solution (only needed initially or if serverless.yml changes)
+* Serverless command: `serverless deploy -r us-west-2 -v --aws-s3-accelerate`
+* Npm Shortcut: `npm run deploy` (has defaults built in)
+
+## Deploy just function
+* Serverless command: `serverless deploy -r us-west-2 -v -f connectNotification`
+* Npm Shortcut: `npm run deployf` (has defaults built in)
+
+## Testing remotely and locally
+Remotely (requires a deploy of the function between changes):
+* Serverless command: `serverless invoke -f connectNotification -p payload.json` Runs function remotely and uses payload.json file to simulate imput
+* Npm Shortcut: `npm run test` (has defaults built in)
+
+Locally (very useful for testing changes, fast and quick doesn't require a deploy):
+* Serverless command: `serverless invoke local -f connectNotification -p payload.json` Runs function remotely and uses payload.json file to simulate imput
+* Npm Shortcut: `npm run testl` (has defaults built in)
+
 ## Monitoring logs with Serverless
 `serverless logs -f connect -t`
 * `-f` specifies the Serverless function name
 * `-t` to display/update logs in [near] real-time
-* Shortcut: `
+* Shortcut: `npm run logs`
 
 ## PostMan
 smooch.postman_collection.json has a simple post setup to test the API end point.  You will need to rerplace the endpoint with your actual endpoint
