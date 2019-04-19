@@ -14,10 +14,10 @@ A quick port of the original project in Python to Node
 4. Authorised/configured AWS IAM user (e.g.:)
     * keyId/secret under [serverless] in ~/.aws/credentials, or
     * `serverless config credentials --provider aws --key xxxxxxxxxxx --secret xxxxxxxxxxx`
-5. Clone repo 
-6. run npm install 
-7. check out package.json for list of short cut commands that can be used via npm run, ex npm run deploy or run npm testl
-8. Check original repo for more info - ttps://github.com/smooch/smooch-zendesk-connect/tree/smoochConnect-public-RC
+5. Clone repo `git clone https://github.com/edwilliszen/smooch-node.git`
+6. In repo directory run `npm install` 
+7. Take a look at package.json for list of short cut commands that can be used via npm run, ex `npm run deploy` or `run npm testl`
+8. Check original repo for more info - https://github.com/smooch/smooch-zendesk-connect/tree/smoochConnect-public-RC
 
 ## Push environment variables to AWS (SSM)
 Use the command `aws ssm put-parameter --name supermanToken --type String --value mySupermanToken`
