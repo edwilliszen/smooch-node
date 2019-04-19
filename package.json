@@ -1,0 +1,23 @@
+{
+  "name": "smooch-node",
+  "version": "1.0.0",
+  "description": "Smooch Zendesk Connect port from Python to Node",
+  "main": "handler.js",
+  "scripts": {
+    "deploy": "serverless deploy -r us-west-2 -v --aws-s3-accelerate",
+    "deployf": "serverless deploy -r us-west-2 -v -f connectNotification",
+    "test": "serverless invoke -f connectNotification -p payload.json",
+    "testl": "serverless invoke local -f connectNotification -p payload.json",
+    "logs": "serverless logs -f connectNotification -t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwilliszen/smooch-node.git"
+  },
+  "author": "Ed Willis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwilliszen/smooch-node/issues"
+  },
+  "homepage": "https://github.com/edwilliszen/smooch-node#readme"
+}

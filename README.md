@@ -30,6 +30,7 @@ Use the command `aws ssm put-parameter --name supermanToken --type String --valu
 `serverless logs -f connect -t`
 * `-f` specifies the Serverless function name
 * `-t` to display/update logs in [near] real-time
+* Shortcut: `
 
 ## PostMan
 smooch.postman_collection.json has a simple post setup to test the API end point.  You will need to rerplace the endpoint with your actual endpoint
