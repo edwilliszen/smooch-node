@@ -84,6 +84,7 @@ function fail_unauthorised()
 }
 
 module.exports.connectNotification = async (event) => {
+  
   // log SSM parameters for now
   console.log ("SMOOCH_INTEGRATIONID: " + process.env.SMOOCH_INTEGRATIONID);
   console.log ("SMOOCH_JWT: " + process.env.SMOOCH_JWT);
@@ -137,10 +138,9 @@ module.exports.connectNotification = async (event) => {
  
   return {
     statusCode: 200,
-    body: {
-      message: 'connectNotification called successfully!'//,
+    body: JSON.stringify(res)//,
       //input: event,
       //output: JSON.stringify(res)
-    },
+    //},
   }; 
 };
