@@ -1,5 +1,7 @@
 'use strict';
 
+const https = require('https');
+
 console.log("Cold Start...");
 
 const WA_message_template = {
@@ -14,8 +16,9 @@ const WA_message_template = {
       "Casa Geranio"
   ]
 };
-
-const notify_endpoint = "https://api.smooch.io/v1/apps/" + process.env.SMOOCH_APPID + "/notifications"; 
+const hostname = "api.smooch.io"; // do not include http or https protocol, set by port #
+const url_path = "v1/apps/" + process.env.SMOOCH_APPID + "/notifications";
+const notify_endpoint = hostname + url_path; 
 
 const notify_header = {
         'content-type': 'application/json',
@@ -39,6 +42,35 @@ const notify_data = {
       "type": "text",
       "text": msg_text
   }
+}
+
+function httpsPost({body, ...options}) {
+  console.log("body:" + body);
+  console.log("options: " + JSON.stringify(options, null, 2));
+  return new Promise((resolve,reject) => {
+      const req = https.request({
+          method: 'POST',
+          port: 443,
+          ...options,
+      }, res => {
+          const chunks = [];
+          res.on('data', data => chunks.push(data))
+          res.on('end', () => {
+              let body = Buffer.concat(chunks);
+              switch(res.headers['content-type']) {
+                  case 'application/json':
+                      body = JSON.parse(body);
+                      break;
+              };
+              resolve(body);
+          })
+      })
+      req.on('error', reject);      
+      if(body) {
+          req.write(body);
+      }
+      req.end();
+  })
 }
 
 function fail_unauthorised()
@@ -92,11 +124,23 @@ module.exports.connectNotification = async (event) => {
   console.log("Request header: " + JSON.stringify(notify_header, null, 2));
   console.log("Request data: " + JSON.stringify(notify_data, null, 2));
 
+  const res = await httpsPost({
+    hostname: hostname,
+    path: url_path,
+    headers: notify_header,
+    body: JSON.stringify({
+        notify_data
+    })
+  });
+ 
+  console.log ("Response: " + JSON.stringify(res));
+ 
   return {
     statusCode: 200,
     body: {
       message: 'connectNotification called successfully!'//,
-      //input: event
+      //input: event,
+      //output: JSON.stringify(res)
     },
   }; 
 };

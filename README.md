@@ -30,13 +30,13 @@ Use the command `aws ssm put-parameter --name supermanToken --type String --valu
 * Serverless command: `serverless deploy -r us-west-2 -v --aws-s3-accelerate`
 * Npm Shortcut: `npm run deploy` (has defaults built in)
 
-## Deploy just function
+## Deploy just the Lambda function
 * Serverless command: `serverless deploy -r us-west-2 -v -f connectNotification`
 * Npm Shortcut: `npm run deployf` (has defaults built in)
 
 ## Testing remotely and locally
 Remotely (requires a deploy of the function between changes):
-* Serverless command: `serverless invoke -f connectNotification -p payload.json` Runs function remotely and uses payload.json file to simulate imput
+* Serverless command: `serverless invoke -f connectNotification -p payload.json` Runs function remotely and uses payload.json file to simulate input
 * Npm Shortcut: `npm run test` (has defaults built in)
 
 Locally (very useful for testing changes, fast and quick doesn't require a deploy):
