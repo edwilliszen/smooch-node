@@ -134,11 +134,13 @@ module.exports.connectNotification = async (event) => {
     })
   });
  
-  console.log ("Response: " + JSON.stringify(res));
- 
+  //console.log ("Response: " + JSON.stringify(res));
+  console.log ("Response: " + JSON.stringify(res.toString(), null, 2));
+
+
   return {
     statusCode: 200,
-    body: JSON.stringify(res)//,
+    body: JSON.stringify(res.toString(), null, 2)//,
       //input: event,
       //output: JSON.stringify(res)
     //},
